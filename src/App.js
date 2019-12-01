@@ -10,7 +10,6 @@ function App() {
       <div className="App">
         <Route path="/" component={PageLanding} />
         {/* <Route path="/app" component={MainApplication} /> */}
-        <NavBar />
       </div>
     
     </BrowserRouter>
