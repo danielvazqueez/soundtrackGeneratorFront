@@ -20,7 +20,7 @@ class MovieList extends Component {
       token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
     }
     // get movies with ajax
-    axios.get('http://localhost:8080/movies', {
+    axios.get('https://soundtrack-generator-back.herokuapp.com/movies', {
       headers: {
         'Content-Type':'application/json',
         'Authorization': 'Bearer ' + token
@@ -54,7 +54,7 @@ class MovieList extends Component {
     if (token) {
       token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
     }
-    axios.post('http://localhost:8080/movies', { title: this.state.searchString }, {
+    axios.post('https://soundtrack-generator-back.herokuapp.com/movies', { title: this.state.searchString }, {
       headers: {
         'Content-Type':'application/json',
         'Authorization': 'Bearer ' + token

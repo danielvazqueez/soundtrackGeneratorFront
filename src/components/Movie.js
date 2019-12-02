@@ -15,7 +15,7 @@ const Movie = (props) => {
       token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
     }
     // get movies with ajax
-    axios.post('http://localhost:8080/spotify/publishPlaylist', {token: props.token, movieName: props.movie.name, soundtrack: props.movie.soundtrack } , {
+    axios.post('https://soundtrack-generator-back.herokuapp.com/spotify/publishPlaylist', {token: props.token, movieName: props.movie.name, soundtrack: props.movie.soundtrack } , {
       headers: {
         'Content-Type':'application/json',
         'Authorization': 'Bearer ' + token

@@ -9,7 +9,7 @@ const MainApplication = (props) => {
   const [token, setToken] = useState('')
   // Replace with your app's client ID, redirect URI and desired scopes
   const clientId = "7dd8d06f826b4134a3d2af811523a00b";
-  const redirectUri = "http://localhost:3000/app";
+  const redirectUri = "https://soundtrack-generator.herokuapp.com//app";
   const scopes = [
     'playlist-modify-public',
     'playlist-read-private'

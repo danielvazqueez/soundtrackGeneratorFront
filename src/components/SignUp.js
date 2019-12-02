@@ -57,7 +57,7 @@ export default function SignUp() {
       email: event.target.email.value,
       password: event.target.password.value
     }
-    axios.post('http://localhost:8080/users', jsonUser)
+    axios.post('https://soundtrack-generator-back.herokuapp.com/users', jsonUser)
       .then(res => {
         console.log(res)
         alert("Usuario creado con exito");

@@ -59,7 +59,7 @@ export default function SignIn() {
       password: event.target.password.value
     }
     axios({
-      url: 'http://localhost:8080/users/login',
+      url: 'https://soundtrack-generator-back.herokuapp.com/users/login',
       headers: {
           'Content-Type':'application/json'
       },
