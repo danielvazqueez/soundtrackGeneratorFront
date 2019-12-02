@@ -19,7 +19,7 @@ const PageLanding = () => {
       <NavBar />
       <Route
         exact
-        path="/"
+        path="/(home|)"
         key="Login"
         render={() => (
           <div className="PageContainer">

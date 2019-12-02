@@ -9,25 +9,28 @@ import {
 } from '@material-ui/core'
 
 const Movie = (props) => {
+  const createPlaylist = () => {
+    
+  }
   return (
     <div>
       { props.movie ? (
         <Card>
           <CardMedia style={{height: 0, paddingTop: '56%'}}
-          image={props.movie.image.url}
-          title={props.movie.title}
+            image={props.movie.imageUrl}
+            title={props.movie.name}
           />
         <CardContent>
-           <Typography gutterBottom variant="headline" compontent="h2">
-             {props.movie.title}
+           <Typography gutterBottom variant="h6" compontent="h2">
+             {props.movie.name}
            </Typography>
            <Typography component="p">
              {props.movie.description}
            </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary" href={props.course.url} target="_blank">
-            Go to movie
+          <Button size="small" color="primary" onClick={createPlaylist} target="_blank">
+            Add playlist
           </Button>
         </CardActions>
         </Card>

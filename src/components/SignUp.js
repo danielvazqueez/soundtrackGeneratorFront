@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
 
 function Copyright() {
   return (
@@ -48,7 +49,24 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignUp() {
   const classes = useStyles();
-
+  const registerUser = (event) => {
+    event.preventDefault()
+    const jsonUser = {
+      fname: event.target.firstName.value,
+      lname: event.target.lastName.value,
+      email: event.target.email.value,
+      password: event.target.password.value
+    }
+    axios.post('http://localhost:8080/users', jsonUser)
+      .then(res => {
+        console.log(res)
+        alert("Usuario creado con exito");
+        window.location = './'
+      }).catch(error => {
+        alert(error["responseText"])
+      })
+    
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -59,7 +77,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={registerUser}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
