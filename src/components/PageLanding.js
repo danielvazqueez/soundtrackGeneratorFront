@@ -19,21 +19,21 @@ const PageLanding = () => {
       <NavBar />
       <Route
         exact
-        path="/(home|)"
-        key="Login"
-        render={() => (
-          <div className="PageContainer">
-            <SignIn />
-          </div>
-        )}
-      />
-      <Route
-        exact
         path="/register"
         key="Register"
         render={() => (
           <div className="PageContainer">
             <SignUp />
+          </div>
+        )}
+      />
+      <Route
+        exact
+        path="/(home|)"
+        key="Login"
+        render={() => (
+          <div className="PageContainer">
+            <SignIn />
           </div>
         )}
       />

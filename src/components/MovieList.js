@@ -30,16 +30,12 @@ class MovieList extends Component {
       this.setState({movies: response.data})
     })
     .catch((error) => {
-      console.log("Error al traer información de peliculas")
-      console.log(error)
+      alert(error.response.data.error)
     })
   }
 
-  constructor() {
-    super()
-  }
-
   componentDidMount() {
+    console.log(this.props.accessToken)
     this.getMovies()
   }
 
@@ -58,8 +54,6 @@ class MovieList extends Component {
     if (token) {
       token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
     }
-    console.log(this.state.searchString)
-    console.log(token)
     axios.post('http://localhost:8080/movies', { title: this.state.searchString }, {
       headers: {
         'Content-Type':'application/json',
@@ -67,14 +61,10 @@ class MovieList extends Component {
       }
     })
     .then((response) => {
-      // this.setState({movies: this.state.movies.push(response.data)})
-      // this.setState((prevState) => { return { movies: prevState.movies.push(response.data)} })
-      // this.setState({movies: [response.data]})
       this.setState({movies: [...this.state.movies, response.data]})      
     })
     .catch((error) => {
-      console.log("Error al traer información de peliculas")
-      console.log(error)
+      alert(error.response.data.error)
     })
   }
 
@@ -95,14 +85,14 @@ class MovieList extends Component {
                 color="primary"
                 onClick={this.searchMovies}
               >
-                Search
+                Add Movie
               </Button>
             </div>
             
             <Grid container spacing={4} style={{padding: 24}}>
               { this.state.movies.map(currentMovie => (
                 <Grid item xs={12} sm={6} lg={4} xl={3}>
-                  <Movie movie={currentMovie} />
+                  <Movie token={this.props.token} movie={currentMovie} />
                 </Grid>
               ))}
             </Grid>

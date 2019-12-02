@@ -7,13 +7,13 @@ import PageLanding from './components/PageLanding';
 import MainApplication from './components/MainApplication';
 
 function App() {
+  const token = ''
   return (
     <BrowserRouter>
       <div className="App">
-        <Route path="/(home|)" component={PageLanding} />
-        <Route path="/app" component={MainApplication} />
+        <Route path="/(|home|register)" component={PageLanding} />
+        <Route path="/app" token={token} component={MainApplication} />
       </div>
-    
     </BrowserRouter>
   );
 }

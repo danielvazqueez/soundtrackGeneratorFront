@@ -1,0 +1,4 @@
+.Navigation .ToolBar{
+  display: flex;
+  justify-content: space-between;
+}

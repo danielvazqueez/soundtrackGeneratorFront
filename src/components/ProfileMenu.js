@@ -7,9 +7,18 @@ const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [anchor, setAnchor] = useState(null);
 
+
   const logout = () => {
-    
+    localStorage.removeItem('token');
+    window.location = './home'
   }
+
+  const handleMenuClose = () => {
+    setAnchor(null);
+    setIsOpen(false)
+  };
+  
+
   return (
     <>
       <IconButton
@@ -35,7 +44,7 @@ const ProfileMenu = () => {
           horizontal: "right"
         }}
         open={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={handleMenuClose}
       >
         <Link to="/">
           <MenuItem onClick={() => logout()}>Cerrar Sesión.</MenuItem>
@@ -45,4 +54,4 @@ const ProfileMenu = () => {
   );
 }
 
-export default withAuth(ProfileMenu);
+export default ProfileMenu;

@@ -7,10 +7,26 @@ import {
   Button,
   Typography
 } from '@material-ui/core'
-
+import axios from 'axios';
 const Movie = (props) => {
   const createPlaylist = () => {
-    
+    var token = localStorage.getItem('token');
+    if (token) {
+      token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
+    }
+    // get movies with ajax
+    axios.post('http://localhost:8080/spotify/publishPlaylist', {token: props.token, movieName: props.movie.name, soundtrack: ["Stone Cold", "In My Mind"]} , {
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    .then((response) => {
+      alert(response.data)
+    })
+    .catch((error) => {
+      alert(error.response)
+    })
   }
   return (
     <div>
@@ -29,7 +45,7 @@ const Movie = (props) => {
            </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary" onClick={createPlaylist} target="_blank">
+          <Button size="small" color="primary" onClick={createPlaylist}>
             Add playlist
           </Button>
         </CardActions>
